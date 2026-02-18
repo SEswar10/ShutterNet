@@ -1,0 +1,51 @@
+import { useContext } from "react";
+import "./stories.scss"
+import { AuthContext } from "../../context/authContext"
+
+const Stories = () => {
+
+  const {currentUser} = useContext(AuthContext)
+
+  //TEMPORARY
+  const stories = [
+    {
+      id: 1,
+      name: "Shreekarthick.photo",
+      img: "https://images.pexels.com/photos/1264210/pexels-photo-1264210.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    },
+    {
+      id: 2,
+      name: "sri",
+      img: "https://images.pexels.com/photos/3299386/pexels-photo-3299386.jpeg?auto=compress&cs=tinysrgb&w=600",
+    },
+    {
+      id: 3,
+      name: "kamatchiraman.photo",
+      img: "https://images.pexels.com/photos/3541916/pexels-photo-3541916.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    },
+    {
+      id: 4,
+      name: "randy",
+      img: "https://images.pexels.com/photos/4631085/pexels-photo-4631085.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      img:"https://images.pexels.com/photos/2188888/pexels-photo-2188888.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    },
+  ];
+
+  return (
+    <div className="stories">
+      <div className="story">
+          <img src={currentUser.profilePic} alt="" />
+          <span>{currentUser.name}</span>
+          <button>+</button>
+        </div>
+      {stories.map(story=>(
+        <div className="story" key={story.id}>
+          <img src={story.img} alt="" />
+          <span>{story.name}</span>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+export default Stories
