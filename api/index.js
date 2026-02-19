@@ -10,7 +10,7 @@ import multer from 'multer';
 import cookieParser from 'cookie-parser';
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8800;
 
 // Middlewares
 app.use((req, res, next) => {
