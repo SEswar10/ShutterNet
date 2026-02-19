@@ -10,7 +10,7 @@ const Login = () => {
   });
   const [err, setErr] = useState(null);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -21,9 +21,9 @@ const Login = () => {
     e.preventDefault();
     try {
       await login(inputs);
-      navigate("/")
+      navigate("/");
     } catch (err) {
-      setErr(err.response.data);
+      setErr(err?.response?.data || "Something went wrong. Please try again.");
     }
   };
 
@@ -33,7 +33,8 @@ const Login = () => {
         <div className="left">
           <h1>Hello.</h1>
           <p>
-          Photography is the simplest thing in the world, but it is incredibly complicated to make it really work.”.
+            Photography is the simplest thing in the world, but it is incredibly
+            complicated to make it really work.".
           </p>
           <span>Don't you have an account?</span>
           <Link to="/register">
@@ -55,7 +56,7 @@ const Login = () => {
               name="password"
               onChange={handleChange}
             />
-            {err && err}
+            {err && <p style={{ color: "red" }}>{err}</p>}
             <button onClick={handleLogin}>Login</button>
           </form>
         </div>
